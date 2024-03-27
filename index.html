@@ -8,6 +8,7 @@
     <style>
         body {
             font-family: 'Rubik Doodle Shadow', sans-serif;
+            font-size: 10vw;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -26,17 +27,17 @@
         #board {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 5%; /* Relative gap */
-            margin: 5% auto; /* Adjusted margin */
-            padding: 5%; /* Relative padding */
+            gap: 3%; /* Relative gap */
+            margin: 1% auto; /* Adjusted margin */
+            padding: 8%; /* Relative padding */
         }
         .cell {
             width: 100%; /* Full width */
             padding-top: 100%; /* 1:1 Aspect Ratio */
             position: relative;
             background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid #555;
-            border-radius: 8px;
+            border: 3px solid #555;
+            border-radius: 10px;
             transition: background-color 0.3s ease;
         }
         .cell:hover {
@@ -45,24 +46,25 @@
         .cell::before {
             content: attr(data-value);
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 30%;
+            left: 30%;
             transform: translate(-50%, -50%);
-            font-size: 6vw; /* Responsive font size */
+            font-size: 9vw; /* Responsive font size */
         }
         #status, #scoreCard {
-            font-size: 4vw; /* Responsive font size */
-            margin: 20px 0;
+            font-size: 7vw; /* Responsive font size */
+            margin: 4px 0;
         }
         button {
             background: linear-gradient(to bottom, #654ea3, #eaafc8);
             border: none;
-            padding: 10px 15px;
+            padding: 10px 10px;
             color: white;
-            font-size: 4vw; /* Responsive font size */
+            font-size: 7vw; /* Responsive font size */
             cursor: pointer;
-            border-radius: 20px;
-            margin-top: 10px;
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 10px;
             transition: background-color 0.3s ease;
         }
         button:hover {
@@ -78,6 +80,7 @@
         }
     </style>
 </head>
+
 <body>
     <div id="game">
         <div id="scoreCard">
@@ -233,4 +236,3 @@
 </body>
 
 </html>
-
