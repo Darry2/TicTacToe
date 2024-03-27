@@ -13,21 +13,10 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            padding: 10px;
+            padding: 20px;
             background-color: #000;
             color: white;
         }
-      #gameTitle {
-    font-size: 5vw; /* Responsive font size */
-    color: #FFJ; /* White Color */
-    margin-bottom: 20px; /* Spacing below the title */
-}
-
-@media (min-width: 60px) {
-    #gameTitle {
-        font-size: 50px; /* Larger fixed size for wider screens */
-    }
-}
         #game {
             width: 100%;
             max-width: 600px; /* Limits maximum size for desktop */
@@ -37,19 +26,17 @@
         #board {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2%; /* Relative gap */
-            margin: 0% auto; /* Adjusted margin */
-            padding: 20%; /* Relative padding */
-            margin-top: -100px;
-            margin-bottom: -90px;
+            gap: 3%; /* Relative gap */
+            margin: 1% auto; /* Adjusted margin */
+            padding: 8%; /* Relative padding */
         }
         .cell {
             width: 100%; /* Full width */
             padding-top: 100%; /* 1:1 Aspect Ratio */
             position: relative;
             background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid #555;
-            border-radius: 8px;
+            border: 3px solid #555;
+            border-radius: 10px;
             transition: background-color 0.3s ease;
         }
         .cell:hover {
@@ -58,19 +45,19 @@
         .cell::before {
             content: attr(data-value);
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 30%;
+            left: 30%;
             transform: translate(-50%, -50%);
-            font-size: 20vw; /* Responsive font size */
+            font-size: 6vw; /* Responsive font size */
         }
         #status, #scoreCard {
-            font-size: 40vw; /* Responsive font size */
-            margin: 20px 0;
+            font-size: 4vw; /* Responsive font size */
+            margin: 4px 0;
         }
         button {
             background: linear-gradient(to bottom, #654ea3, #eaafc8);
             border: none;
-            padding: 10px 15px;
+            padding: 15px 10px;
             color: white;
             font-size: 4vw; /* Responsive font size */
             cursor: pointer;
@@ -83,17 +70,17 @@
         }
         @media (min-width: 600px) {
             .cell::before {
-                font-size: 4px; /* Fixed font size for larger screens */
+                font-size: 32px; /* Fixed font size for larger screens */
             }
             #status, #scoreCard, button {
-                font-size: 20px; /* Adjusted font size for readability */
+                font-size: 18px; /* Adjusted font size for readability */
             }
         }
     </style>
 </head>
+
 <body>
     <div id="game">
-      <div id="gameTitle">Tic Tac Toe</div>
         <div id="scoreCard">
             <div id="playerXScore">Player X: 0</div>
             <div id="playerOScore">Player O: 0</div>
