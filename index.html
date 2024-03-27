@@ -26,17 +26,17 @@
         #board {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 3%; /* Relative gap */
-            margin: 1% auto; /* Adjusted margin */
-            padding: 8%; /* Relative padding */
+            gap: 5%; /* Relative gap */
+            margin: 5% auto; /* Adjusted margin */
+            padding: 5%; /* Relative padding */
         }
         .cell {
             width: 100%; /* Full width */
             padding-top: 100%; /* 1:1 Aspect Ratio */
             position: relative;
             background-color: rgba(255, 255, 255, 0.1);
-            border: 3px solid #555;
-            border-radius: 10px;
+            border: 1px solid #555;
+            border-radius: 8px;
             transition: background-color 0.3s ease;
         }
         .cell:hover {
@@ -45,21 +45,21 @@
         .cell::before {
             content: attr(data-value);
             position: absolute;
-            top: 30%;
-            left: 30%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 6vw; /* Responsive font size */
+            font-size: 20vw; /* Responsive font size */
         }
         #status, #scoreCard {
-            font-size: 4vw; /* Responsive font size */
-            margin: 4px 0;
+            font-size: 40vw; /* Responsive font size */
+            margin: 20px 0;
         }
         button {
             background: linear-gradient(to bottom, #654ea3, #eaafc8);
             border: none;
-            padding: 15px 10px;
+            padding: 10px 15px;
             color: white;
-            font-size: 4vw; /* Responsive font size */
+            font-size: 40vw; /* Responsive font size */
             cursor: pointer;
             border-radius: 20px;
             margin-top: 10px;
@@ -70,17 +70,17 @@
         }
         @media (min-width: 600px) {
             .cell::before {
-                font-size: 32px; /* Fixed font size for larger screens */
+                font-size: 40px; /* Fixed font size for larger screens */
             }
             #status, #scoreCard, button {
-                font-size: 18px; /* Adjusted font size for readability */
+                font-size: 40px; /* Adjusted font size for readability */
             }
         }
     </style>
 </head>
-
 <body>
     <div id="game">
+      <div id="gameTitle">Tic Tac Toe</div>
         <div id="scoreCard">
             <div id="playerXScore">Player X: 0</div>
             <div id="playerOScore">Player O: 0</div>
