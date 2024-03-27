@@ -13,19 +13,19 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             background-color: #000;
             color: white;
         }
       #gameTitle {
     font-size: 5vw; /* Responsive font size */
-    color: #FFF; /* White Color */
+    color: #FFJ; /* White Color */
     margin-bottom: 20px; /* Spacing below the title */
 }
 
-@media (min-width: 600px) {
+@media (min-width: 60px) {
     #gameTitle {
-        font-size: 48px; /* Larger fixed size for wider screens */
+        font-size: 50px; /* Larger fixed size for wider screens */
     }
 }
         #game {
@@ -37,9 +37,11 @@
         #board {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 5%; /* Relative gap */
-            margin: 5% auto; /* Adjusted margin */
-            padding: 5%; /* Relative padding */
+            gap: 2%; /* Relative gap */
+            margin: 0% auto; /* Adjusted margin */
+            padding: 20%; /* Relative padding */
+            margin-top: -100px;
+            margin-bottom: -90px;
         }
         .cell {
             width: 100%; /* Full width */
@@ -70,7 +72,7 @@
             border: none;
             padding: 10px 15px;
             color: white;
-            font-size: 40vw; /* Responsive font size */
+            font-size: 4vw; /* Responsive font size */
             cursor: pointer;
             border-radius: 20px;
             margin-top: 10px;
@@ -81,10 +83,10 @@
         }
         @media (min-width: 600px) {
             .cell::before {
-                font-size: 40px; /* Fixed font size for larger screens */
+                font-size: 4px; /* Fixed font size for larger screens */
             }
             #status, #scoreCard, button {
-                font-size: 40px; /* Adjusted font size for readability */
+                font-size: 20px; /* Adjusted font size for readability */
             }
         }
     </style>
