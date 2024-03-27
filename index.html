@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,99 +11,72 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
             margin: 0;
-            padding: 10px;
             background-color: #000;
             color: white;
         }
-
         #game {
-            max-width: 90%;
-            width: 500px;
+            max-width: 600px; /* Adjusted for desktop */
+            margin: auto;
             text-align: center;
         }
-
         #board {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin: 20px 0;
-            padding: 15px;
+            gap: 15px; /* Increased gap */
+            margin: 30px 0; /* Increased margin */
+            padding: 20px; /* Increased padding */
             border-radius: 15px;
         }
-
         .cell {
-            width: 100%;
-            padding-top: 100%; /* 1:1 Aspect Ratio */
-            position: relative; /* If you want text inside of it */
+            width: 120px; /* Increased width */
+            height: 120px; /* Increased height */
+            position: relative;
             background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid #555;
+            border: 2px solid #555; /* Thicker border */
             color: white;
             border-radius: 8px;
             transition: background-color 0.3s ease;
+            font-size: 4rem; /* Increased font size */
         }
-
         .cell:hover {
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.2);
         }
-
         .cell::before {
             content: attr(data-value);
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 6vw; /* Responsive font size */
+            font-size: 5rem; /* Adjusted for readability */
         }
-
         #status {
-            font-size: 5vw; /* Responsive font size */
+            font-size: 24px; /* Adjusted font size for desktop */
             margin: 20px 0;
         }
-
-        .winning-cell::before,
-        .tied-cell::before {
-            animation: scale 0.5s infinite alternate;
-        }
-
-        @keyframes scale {
-            to {
-                transform: translate(-50%, -50%) scale(1.2);
-            }
-        }
-
-        #scoreCard {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            font-size: 4vw; /* Responsive font size */
-            margin-bottom: 20px;
-        }
-
-        #resetScoreButton,
-        #restartButton,
-        #friendModeButton {
-            background: linear-gradient(to bottom, purple, purple, purple), rgba(0, 128, 0, 0.8);
+        button {
+            background: linear-gradient(to bottom, #654ea3, #eaafc8);
             border: none;
-            padding: 8px 15px;
+            padding: 10px 15px;
             color: white;
-            font-size: 4vw; /* Responsive font size */
+            font-size: 18px; /* Increased font size */
             cursor: pointer;
             border-radius: 20px;
             margin-top: 10px;
             transition: background-color 0.3s ease;
         }
-
-        #resetScoreButton:hover,
-        #restartButton:hover,
-        #friendModeButton:hover {
-            background: linear-gradient(to bottom, grey, grey), rgba(128, 1, 0, 0.8);
+        button:hover {
+            background-color: #555;
+        }
+        #scoreCard {
+            display: flex;
+            justify-content: space-around;
+            font-size: 20px; /* Adjusted for desktop */
+            margin-bottom: 20px;
         }
     </style>
 </head>
-
 <body>
     <div id="game">
         <div id="scoreCard">
