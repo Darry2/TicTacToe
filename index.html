@@ -13,32 +13,31 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            padding: 20px;
             background-color: #000;
             color: white;
         }
         #game {
-            max-width: 600px; /* Adjusted for desktop */
+            width: 100%;
+            max-width: 600px; /* Limits maximum size for desktop */
             margin: auto;
             text-align: center;
         }
         #board {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px; /* Increased gap */
-            margin: 30px 0; /* Increased margin */
-            padding: 20px; /* Increased padding */
-            border-radius: 15px;
+            gap: 5%; /* Relative gap */
+            margin: 5% auto; /* Adjusted margin */
+            padding: 5%; /* Relative padding */
         }
         .cell {
-            width: 120px; /* Increased width */
-            height: 120px; /* Increased height */
+            width: 100%; /* Full width */
+            padding-top: 100%; /* 1:1 Aspect Ratio */
             position: relative;
             background-color: rgba(255, 255, 255, 0.1);
-            border: 2px solid #555; /* Thicker border */
-            color: white;
+            border: 1px solid #555;
             border-radius: 8px;
             transition: background-color 0.3s ease;
-            font-size: 4rem; /* Increased font size */
         }
         .cell:hover {
             background-color: rgba(255, 255, 255, 0.2);
@@ -49,10 +48,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 5rem; /* Adjusted for readability */
+            font-size: 6vw; /* Responsive font size */
         }
-        #status {
-            font-size: 24px; /* Adjusted font size for desktop */
+        #status, #scoreCard {
+            font-size: 4vw; /* Responsive font size */
             margin: 20px 0;
         }
         button {
@@ -60,7 +59,7 @@
             border: none;
             padding: 10px 15px;
             color: white;
-            font-size: 18px; /* Increased font size */
+            font-size: 4vw; /* Responsive font size */
             cursor: pointer;
             border-radius: 20px;
             margin-top: 10px;
@@ -69,11 +68,13 @@
         button:hover {
             background-color: #555;
         }
-        #scoreCard {
-            display: flex;
-            justify-content: space-around;
-            font-size: 20px; /* Adjusted for desktop */
-            margin-bottom: 20px;
+        @media (min-width: 600px) {
+            .cell::before {
+                font-size: 32px; /* Fixed font size for larger screens */
+            }
+            #status, #scoreCard, button {
+                font-size: 18px; /* Adjusted font size for readability */
+            }
         }
     </style>
 </head>
