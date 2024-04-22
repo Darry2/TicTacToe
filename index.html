@@ -3,234 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow:wght@400&display=swap">
+    <title>Website for Sale</title>
     <style>
         body {
-            font-family: 'Rubik Doodle Shadow', sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            padding: 20px;
-            background-color: #000;
-            color: white;
         }
-        #game {
-            width: 100%;
-            max-width: 600px; /* Limits maximum size for desktop */
-            margin: auto;
+        .container {
             text-align: center;
-        }
-        #board {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 5%; /* Relative gap */
-            margin: 5% auto; /* Adjusted margin */
-            padding: 5%; /* Relative padding */
-        }
-        .cell {
-            width: 100%; /* Full width */
-            padding-top: 100%; /* 1:1 Aspect Ratio */
-            position: relative;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid #555;
+            background-color: #ffffff;
+            padding: 20px;
             border-radius: 8px;
-            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        .cell:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+        h1 {
+            color: #333;
         }
-        .cell::before {
-            content: attr(data-value);
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 20vw; /* Responsive font size */
-        }
-        #status, #scoreCard {
-            font-size: 40vw; /* Responsive font size */
-            margin: 20px 0;
-        }
-        button {
-            background: linear-gradient(to bottom, #654ea3, #eaafc8);
-            border: none;
-            padding: 10px 15px;
-            color: white;
-            font-size: 40vw; /* Responsive font size */
-            cursor: pointer;
-            border-radius: 20px;
-            margin-top: 10px;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #555;
-        }
-        @media (min-width: 600px) {
-            .cell::before {
-                font-size: 40px; /* Fixed font size for larger screens */
-            }
-            #status, #scoreCard, button {
-                font-size: 40px; /* Adjusted font size for readability */
-            }
+        p {
+            color: #555;
         }
     </style>
 </head>
 <body>
-    <div id="game">
-      <div id="gameTitle">Tic Tac Toe</div>
-        <div id="scoreCard">
-            <div id="playerXScore">Player X: 0</div>
-            <div id="playerOScore">Player O: 0</div>
-            <div id="drawScore">Draws: 0</div>
-            <button id="resetScoreButton">Reset Scores</button>
-        </div>
-        <div id="status">Friend Mode | X's turn</div>
-        <div id="board">
-            <div class="cell" data-cell-index="0" data-value=""></div>
-            <div class="cell" data-cell-index="1" data-value=""></div>
-            <div class="cell" data-cell-index="2" data-value=""></div>
-            <div class="cell" data-cell-index="3" data-value=""></div>
-            <div class="cell" data-cell-index="4" data-value=""></div>
-            <div class="cell" data-cell-index="5" data-value=""></div>
-            <div class="cell" data-cell-index="6" data-value=""></div>
-            <div class="cell" data-cell-index="7" data-value=""></div>
-            <div            class="cell" data-cell-index="8" data-value=""></div>
-        </div>
-        <button id="friendModeButton">Friend Mode</button>
-        <button id="restartButton">Restart Game</button>
+    <div class="container">
+        <h1>Website for Sale</h1>
+        <p>Interested buyers can reach out to us at <a href="mailto:vivekanandambani@gmail.com
+">abc@gmail.com</a></p>
     </div>
-
-    <audio id="winSound" src="audio-won.mp3"></audio>
-    <script>
-        const cells = document.querySelectorAll('.cell');
-        const statusText = document.getElementById('status');
-        const restartButton = document.getElementById('restartButton');
-        const friendModeButton = document.getElementById('friendModeButton');
-        const resetScoreButton = document.getElementById('resetScoreButton');
-        const winSound = document.getElementById('winSound');
-        let currentPlayer = 'X';
-        let gameActive = true;
-        let friendMode = false;
-        let gameState = ['', '', '', '', '', '', '', '', ''];
-        let playerXScore = 0;
-        let playerOScore = 0;
-        let drawScore = 0;
-        const winningConditions = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-            [0, 3, 6],
-            [1, 4, 7],
-            [2, 5, 8],
-            [0, 4, 8],
-            [2, 4, 6]
-        ];
-
-        function handleCellPlayed(clickedCell, clickedCellIndex) {
-            gameState[clickedCellIndex] = currentPlayer;
-            clickedCell.setAttribute('data-value', currentPlayer);
-        }
-
-        function handlePlayerChange() {
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-            statusText.innerText = friendMode ? `Friend Mode | ${currentPlayer}'s turn` : `${currentPlayer}'s turn`;
-        }
-
-        function handleResultValidation() {
-            let roundWon = false;
-            for (let i = 0; i <= 7; i++) {
-                const winCondition = winningConditions[i];
-                let a = gameState[winCondition[0]];
-                let b = gameState[winCondition[1]];
-                let c = gameState[winCondition[2]];
-                if (a === '' || b === '' || c === '') {
-                    continue;
-                }
-                if (a === b && b === c) {
-                    roundWon = true;
-                    winCondition.forEach(index => {
-                        cells[index].classList.add('winning-cell');
-                    });
-                    break;
-                }
-            }
-
-            if (roundWon) {
-                statusText.innerText = `${currentPlayer} wins!`;
-                gameActive = false;
-                winSound.play();
-                updateScores(currentPlayer);
-                return;
-            }
-
-            if (!gameState.includes('')) {
-                statusText.innerText = `Game drawn!`;
-                gameActive = false;
-                drawScore++;
-                updateScoreCard();
-                return;
-            }
-
-            handlePlayerChange();
-        }
-
-        function updateScores(winner) {
-            if (winner === 'X') {
-                playerXScore++;
-            } else if (winner === 'O') {
-                playerOScore++;
-            }
-            updateScoreCard();
-        }
-
-        function handleCellClick(clickedCellEvent) {
-            const clickedCell = clickedCellEvent.target;
-            const clickedCellIndex = parseInt(clickedCell.getAttribute('data-cell-index'), 10);
-            if (gameState[clickedCellIndex] !== '' || !gameActive) {
-                return;
-            }
-            handleCellPlayed(clickedCell, clickedCellIndex);
-            handleResultValidation();
-        }
-
-        function handleRestartGame() {
-            gameActive = true;
-            currentPlayer = 'X';
-            gameState = ['', '', '', '', '', '', '', '', ''];
-            statusText.innerText = friendMode ? `Friend Mode | ${currentPlayer}'s turn` : `${currentPlayer}'s turn`;
-            cells.forEach(cell => {
-                cell.classList.remove('winning-cell', 'tied-cell');
-                cell.setAttribute('data-value', '');
-            });
-        }
-
-        function handleFriendModeToggle() {
-            friendMode = !friendMode;
-            handleRestartGame();
-            friendModeButton.innerText = friendMode ? 'Bot Mode' : 'Friend Mode';
-        }
-
-        function handleResetScore() {
-            playerXScore = 0;
-            playerOScore = 0;
-            drawScore = 0;
-            updateScoreCard();
-        }
-
-        function updateScoreCard() {
-            document.getElementById('playerXScore').innerText = `Player X: ${playerXScore}`;
-            document.getElementById('playerOScore').innerText = `Player O: ${playerOScore}`;
-            document.getElementById('drawScore').innerText = `Draws: ${drawScore}`;
-        }
-
-        cells.forEach(cell => cell.addEventListener('click', handleCellClick));
-        restartButton.addEventListener('click', handleRestartGame);
-        friendModeButton.addEventListener('click', handleFriendModeToggle);
-        resetScoreButton.addEventListener('click', handleResetScore);
-    </script>
 </body>
-
 </html>
